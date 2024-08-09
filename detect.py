@@ -148,7 +148,7 @@ def run(weights=ROOT / 'yolov5s.pt',  # model.pt path(s)
         # Inference
         if pt:
             visualize = increment_path(save_dir / Path(path).stem, mkdir=True) if visualize else False
-            pred = model(img, augment=augment, visualize=visualize)[0]
+            pred = model(img, augment=augment, visualize=visualize)  # models/yolo.py: Detect.forward 只保留了Inference输出, 不再需要通过索引取值
         elif onnx:
             if dnn:
                 net.setInput(img)
