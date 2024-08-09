@@ -1,7 +1,7 @@
 
 # YOLOv5量化
 ## 说明
-本项目基于yolov5-6.0修改：
+本项目基于 [yolov5-6.0](https://github.com/ultralytics/yolov5/tree/v6.0) 修改：
 - [#1](https://github.com/Tongkaio/yolov5_quant/pull/1)：输入输出改为仅动态batch，移除多余的节点
 
 文件说明：
