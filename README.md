@@ -1,6 +1,10 @@
 
 # YOLOv5量化
-## 文件说明
+## 说明
+本项目基于yolov5-6.0修改：
+- [#1](https://github.com/Tongkaio/yolov5_quant/pull/1)：输入输出改为仅动态batch，移除多余的节点
+
+文件说明：
 - 相关函数：quantize.py
 - PTQ量化脚本：ptq.py
 
