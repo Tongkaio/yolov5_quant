@@ -171,12 +171,12 @@ def run(data,
         dt[0] += t2 - t1
 
         # Run model
-        out, train_out = model(img, augment=augment)  # inference and training outputs
+        out = model(img, augment=augment)  # models/yolo.py: Detect.forward 只保留了Inference输出, 移除train loss
         dt[1] += time_sync() - t2
 
         # Compute loss
-        if compute_loss:
-            loss += compute_loss([x.float() for x in train_out], targets)[1]  # box, obj, cls
+        # if compute_loss:
+        #     loss += compute_loss([x.float() for x in train_out], targets)[1]  # box, obj, cls
 
         # Run NMS
         targets[:, 2:] *= torch.Tensor([width, height, width, height]).to(device)  # to pixels
