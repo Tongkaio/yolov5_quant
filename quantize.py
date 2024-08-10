@@ -54,9 +54,11 @@ def prepare_model(weight, device, auto=False):
     for k, m in model.named_modules():
         if isinstance(m, Conv):  # assign export-friendly activations
             if isinstance(m.act, nn.SiLU):
-                m.act = SiLU()
+                # ref: https://github.com/Megvii-BaseDetection/YOLOX/issues/719
+                # pytorch 1.8.0+ 支持导出SiLU, 则这行代码可以省略
+                m.act = SiLU()  
         elif isinstance(m, Detect):
-            m.inplace = False
+            m.inplace = False  # 禁止inplace操作, 避免引入ScatterND算子(trt不支持)
             m.onnx_dynamic = True
             # m.forward = m.forward_export  # assign forward (optional)
 
