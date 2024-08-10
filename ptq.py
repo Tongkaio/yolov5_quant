@@ -53,14 +53,14 @@ def run_PTQ(args, device='cpu'):
 
     if args.save_ptq:
         print("Export PTQ...")
-        quantize.export_ptq(model, args.ptq, device)
+        quantize.export_ptq(model, args.ptq)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--weights', type=str, default='yolov5s.pt', help='initial weights path')
-    parser.add_argument('--cocodir', type=str,  default="coco", help="coco directory")
+    parser.add_argument('--cocodir', type=str,  default="../datasets/coco", help="coco directory")
     parser.add_argument('--batch_size', type=int,  default=8, help="batch size for data loader")
     parser.add_argument('--device', default='0', help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
     

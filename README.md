@@ -8,7 +8,7 @@
 - 相关函数：quantize.py
 - PTQ量化脚本：ptq.py
 
-## 运行
+## 量化
 运行 ptq.py，导出 ptq_yolovs5.onnx： 
 ```shell
 $ python ptq.py --eval_origin --eval_ptq
