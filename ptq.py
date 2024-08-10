@@ -90,7 +90,7 @@ if __name__ == "__main__":
     if args.sensitive:
         print("Sensitive Analysis ...")
         ignored_layer = run_SensitiveAnalysis(args.weights, args.cocodir, device)
-        args.ignore_layer = list(map(lambda x: x.replace(".", r"\.") + r"\.(.*)", ignored_layer))  # 转换为正则表达式
+        args.ignore_layers = list(map(lambda x: x.replace(".", r"\.") + r"\.(.*)", ignored_layer))  # 转换为正则表达式
 
     # PTQ并导出模型    
     print("Running PTQ ...")
