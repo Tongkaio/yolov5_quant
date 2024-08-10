@@ -70,7 +70,16 @@ def prepare_model(weight, device, auto=False):
 
 
 def transfer_torch_to_quantization(nn_instance, quant_module):
-    quant_instance = quant_module.__new__(quant_module)  # 创建一个quant_module类型的实例对象, nn_instance: type为<class 'torch.nn.modules.conv.Conv2d'>的实例对象, quant_module类对象: <class 'pytorch_quantization.nn.modules.quant_conv.QuantConv2d'>
+    """_summary_
+
+    Args:
+        nn_instance: 实例对象, 其类型如 <class 'torch.nn.modules.conv.Conv2d'>
+        quant_module: 类对象，如 <class 'pytorch_quantization.nn.modules.quant_conv.QuantConv2d'>
+
+    Returns:
+        _type_: _description_
+    """
+    quant_instance = quant_module.__new__(quant_module)  # 创建一个quant_module类型的实例对象
     
     for k, val in vars(nn_instance).items():  # 获取nn_instance的属性值, vars返回__dict__属性, items()返回字典的键值对, 用于迭代
         setattr(quant_instance, k, val)       # 将nn_instance的属性值赋予quant_instance
